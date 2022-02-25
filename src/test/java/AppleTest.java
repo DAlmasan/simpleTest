@@ -20,6 +20,6 @@ public class AppleTest{
     @Test
     public void alwaysFailAp4()
     {
-        Assert.assertEquals(1, 1);
+        Assert.assertEquals(1, 5);
     }
 }

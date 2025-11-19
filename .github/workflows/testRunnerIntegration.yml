@@ -19,7 +19,7 @@ jobs:
       - name: Log workflow execution parameters
         shell: powershell
         run: |
-          $json = 'null'
+          $json = '${{ toJson(github.event.inputs) }}'
           $jqPath = "$env:TEMP\jq.exe"
           $param = $json | & $jqPath -c .
           Write-Output "execution_parameter:: $param"

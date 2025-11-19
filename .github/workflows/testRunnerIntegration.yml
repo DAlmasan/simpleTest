@@ -20,7 +20,8 @@ jobs:
         shell: powershell
         run: |
           $json = 'null'
-          $param = $json | jq.exe -c .
+          $jqPath = "$env:TEMP\jq.exe"
+          $param = $json | & $jqPath -c .
           Write-Output "execution_parameter:: $param"
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1

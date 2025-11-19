@@ -42,6 +42,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
             
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 1: Convert testsToRun parameter
       - name: Convert testsToRun parameter
         id: convert_tests
         run: |
@@ -51,11 +55,22 @@ jobs:
           # Save the output to an environment variable
           echo "converted_tests=$output" >> $GITHUB_ENV
           echo "::set-output name=converted_tests::$output"
+
+      # Step 2: Set up Java environment
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      # Step 3: Run the tests from the converted list
+      - name: Run JUnit Tests
+        run: mvn test -Dtest="$converted_tests"
           
-      - name: Build & Run Tests (JUnit) — continue on error
-        run: mvn -B test -Dtest="$converted_tests"
+      #- name: Build & Run Tests (JUnit) — continue on error
+        #run: mvn -B test -Dtest="$converted_tests"
         #run: mvn test -Dtest="$converted_tests"
-        continue-on-error: true
+       # continue-on-error: true
 
       - name: Upload test results (Surefire)
         uses: actions/upload-artifact@v4

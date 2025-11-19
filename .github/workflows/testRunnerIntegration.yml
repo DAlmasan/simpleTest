@@ -5,7 +5,7 @@ on:
     types: [completed]
 jobs:
   octane_integration_job:
-    runs-on: octanei do
+    runs-on: octane
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
       - name: Log workflow execution parameters

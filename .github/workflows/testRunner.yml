@@ -53,8 +53,8 @@ jobs:
           echo "::set-output name=converted_tests::$output"
           
       - name: Build & Run Tests (JUnit) — continue on error
-        #run: mvn -B test
-        run: mvn test -Dtest="$converted_tests"
+        run: mvn -B test -Dtest="$converted_tests"
+        #run: mvn test -Dtest="$converted_tests"
         continue-on-error: true
 
       - name: Upload test results (Surefire)

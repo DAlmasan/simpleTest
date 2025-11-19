@@ -9,9 +9,9 @@ jobs:
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
       - name: Log workflow execution parameters
-        shell: bash
+        shell: cmd
         run: |
-          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
+          %USERPROFILE%\jq.exe -c "echo '${{ toJson(github.event.inputs) }}'"
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1
         id: gitHubActionsIntegration

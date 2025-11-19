@@ -52,9 +52,8 @@ jobs:
 
       # Step 2: Run Maven tests (ignore failures)
       - name: Run JUnit Tests
-        run: mvn test -B ${converted_tests:+-Dtest=$converted_tests} \
-            -Dsurefire.failIfNoSpecifiedTests=false \
-            -Dsurefire.testFailureIgnore=true
+        run: mvn test -B -Dsurefire.failIfNoSpecifiedTests=false -Dsurefire.testFailureIgnore=true ${converted_tests:+-Dtest=$converted_tests}
+
 
       # Step 3: Upload test results (Surefire)
       - name: Upload test results

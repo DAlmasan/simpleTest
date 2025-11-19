@@ -8,9 +8,6 @@ jobs:
     runs-on: octane
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
-      - name: Log workflow execution parameters
-        run: |
-          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
       - name: Install jq
         shell: pwsh
         run: |
@@ -20,6 +17,9 @@ jobs:
 
           # Add temp folder to PATH for this job
           $env:PATH += ";$env:TEMP"
+      - name: Log workflow execution parameters
+        run: |
+          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1
         id: gitHubActionsIntegration

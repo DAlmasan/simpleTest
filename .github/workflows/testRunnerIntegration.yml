@@ -9,7 +9,7 @@ jobs:
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
       - name: Install jq
-        shell: pwsh
+        shell: powershell
         run: |
           # Download jq to temp folder
           Invoke-WebRequest -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" `

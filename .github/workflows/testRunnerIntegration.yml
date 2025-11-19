@@ -20,7 +20,7 @@ jobs:
           githubToken: ${{secrets.GITHUB_TOKEN}}
           serverBaseUrl: https://github.com/DAlmasan
           pipelineNamePattern: '${workflow_name}'
-          unitTestResultsGlobPattern: "**/*.xml"
           testingFramework: "junit"
+          unitTestResultsGlobPattern: "**/target/surefire-reports/*.xml"
           #gherkinTestResultsGlobPattern: "**/*.xml"
-          logLevel: 0
+          logLevel: 2

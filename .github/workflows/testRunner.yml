@@ -19,10 +19,11 @@ on:
       executionId:
          type: number
          default: "0"
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-  
+
     steps:
       - name: Check out source
         uses: actions/checkout@v4
@@ -41,38 +42,22 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-            
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       # Step 1: Convert testsToRun parameter
       - name: Convert testsToRun parameter
         id: convert_tests
         run: |
-          # Run the npx command and capture its output
           output=$(npx @opentext/sdp-sdm-tests-to-run-conversion --framework="junit" --testsToRun="${{ github.event.inputs.testsToRun }}" --logLevel=0)
-
-          # Save the output to an environment variable
           echo "converted_tests=$output" >> $GITHUB_ENV
-          echo "::set-output name=converted_tests::$output"
 
-      # Step 2: Set up Java environment
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: "temurin"
-          java-version: "21"
-
-      # Step 3: Run the tests from the converted list
+      # Step 2: Run Maven tests (ignore failures)
       - name: Run JUnit Tests
-        run: mvn test -Dtest="$converted_tests"
-          
-      #- name: Build & Run Tests (JUnit) — continue on error
-        #run: mvn -B test -Dtest="$converted_tests"
-        #run: mvn test -Dtest="$converted_tests"
-       # continue-on-error: true
+        run: mvn test -B ${converted_tests:+-Dtest=$converted_tests} \
+            -Dsurefire.failIfNoSpecifiedTests=false \
+            -Dsurefire.testFailureIgnore=true
 
-      - name: Upload test results (Surefire)
+      # Step 3: Upload test results (Surefire)
+      - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: junit-test-results

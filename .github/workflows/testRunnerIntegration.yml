@@ -17,7 +17,7 @@ jobs:
           $env:PATH += ";$env:TEMP" 
           jq.exe --version
       - name: Log workflow execution parameters
-        shell: powershell
+        shell: bash
         run: |
           echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
       - name: GitHub Actions ALM Octane Integration

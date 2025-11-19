@@ -25,3 +25,11 @@ public class CalcsTest {
 
     @Test
     public void testestestestest() {
+        assertEquals(1, 1);
+    }
+
+    @Test
+    public void sum_test_A() {
+        assertEquals(3, VerifyDefect.sum(1, 2));
+    }
+}

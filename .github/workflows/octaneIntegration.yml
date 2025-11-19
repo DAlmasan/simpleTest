@@ -1,6 +1,6 @@
 on: octaneIntegration
   workflow_run:
-    workflows: [simpleTest]
+    workflows: [octaneIntegration]
     types: [requested, in_progress, completed]
   pull_request:
     types: [opened, edited, closed, reopened]

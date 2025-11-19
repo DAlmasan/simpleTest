@@ -5,10 +5,11 @@ on:
     types: [completed]
 jobs:
   octane_integration_job:
-    runs-on: ubuntu-latest
+    runs-on: octanei do
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
       - name: Log workflow execution parameters
+        shell: bash
         run: |
           echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
       - name: GitHub Actions ALM Octane Integration

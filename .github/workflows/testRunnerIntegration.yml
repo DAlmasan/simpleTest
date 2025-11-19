@@ -5,19 +5,12 @@ on:
     types: [completed]
 jobs:
   octane_integration_job:
-    runs-on: octane
+    runs-on: octaneLinux
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
-      - name: Install jq
-        shell: powershell
-        run: |
-           Invoke-WebRequest -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$env:USERPROFILE\jq.exe"
       - name: Log workflow execution parameters
-        shell: cmd
         run: |
-          JQ="$HOME/jq.exe"
-          echo "null" | "$JQ" -c .
-          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | "$JQ" -c .)"
+          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1
         id: gitHubActionsIntegration

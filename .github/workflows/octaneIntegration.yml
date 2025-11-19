@@ -23,4 +23,4 @@ jobs:
           serverBaseUrl: https://github.com/DAlmasan
           pipelineNamePattern: '${workflow_name}'
           unitTestResultsGlobPattern: "**/*.xml"
-          gherkinTestResultsGlobPattern: "**/*.xml"
+          #gherkinTestResultsGlobPattern: "**/*.xml"

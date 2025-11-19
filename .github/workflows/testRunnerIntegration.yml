@@ -11,6 +11,15 @@ jobs:
       - name: Log workflow execution parameters
         run: |
           echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
+      - name: Install jq
+        shell: pwsh
+        run: |
+          # Download jq to temp folder
+          Invoke-WebRequest -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" `
+              -OutFile "$env:TEMP\jq.exe"
+
+          # Add temp folder to PATH for this job
+          $env:PATH += ";$env:TEMP"
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1
         id: gitHubActionsIntegration

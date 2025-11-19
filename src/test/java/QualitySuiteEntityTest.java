@@ -2,94 +2,94 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QualitySuiteEntityTest {
+
     @Test
-    public void alwaysFail()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail() {
+        assertEquals(2, 1);
     }
+
     @Test
-    public void alwaysFail1()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail1() {
+        assertEquals(2, 1);
     }
+
     @Test
-    public void alwaysFail2()
-    {
-        Assert.assertEquals(1, 1);
+    public void alwaysFail2() {
+        assertEquals(1, 1);
     }
+
     @Test
-    public void alwaysFail3()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail3() {
+        assertEquals(2, 1);
     }
+
     @Test
-    public void alwaysFail4()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail4() {
+        assertEquals(2, 1);
     }
+
     @Test
-    public void alwaysFail5()
-    {
-        Assert.assertEquals(1, 3); 
+    public void alwaysFail5() {
+        assertEquals(3, 1);
     }
+
     @Test
-    public void alwaysFail6()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail6() {
+        assertEquals(2, 1);
     }
+
     @Test
-    public void alwaysFail7()
-    {
-        Assert.assertEquals(1, 7);
+    public void alwaysFail7() {
+        assertEquals(7, 1);
     }
+
     @Test
-    public void alwaysFail8()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail8() {
+        assertEquals(2, 1);
     }
+
     @Test
-    public void alwaysFail9()
-    {
-        Assert.assertEquals(1, 5);
+    public void alwaysFail9() {
+        assertEquals(5, 1);
     }
-     @Test
-    public void alwaysFail10()
-    {
-        Assert.assertEquals(1, 1);
-    }
-     @Test
-    public void alwaysFail11()
-    {
-        Assert.assertEquals(1, 1);
-    }
-     @Test
-    public void alwaysFail12()
-    {
-        Assert.assertEquals(1, 2);
-    }
+
     @Test
-    public void alwaysFail13()
-    {
-        Assert.assertEquals(1, 2);
+    public void alwaysFail10() {
+        assertEquals(1, 1);
     }
-     @Test
-    public void alwaysFail14()
-    {
-        Assert.assertEquals(1, 1);
-    }
-     @Test
-    public void alwaysFail15()
-    {
-        Assert.assertEquals(1, 2);
-    }
+
     @Test
-    public void alwaysFail16()
-    {
-        Assert.assertEquals(1, 14);
+    public void alwaysFail11() {
+        assertEquals(1, 1);
     }
+
     @Test
-    public void alwaysFail17()
-    {
-        Assert.assertEquals(1, 1);
+    public void alwaysFail12() {
+        assertEquals(2, 1);
+    }
+
+    @Test
+    public void alwaysFail13() {
+        assertEquals(2, 1);
+    }
+
+    @Test
+    public void alwaysFail14() {
+        assertEquals(1, 1);
+    }
+
+    @Test
+    public void alwaysFail15() {
+        assertEquals(2, 1);
+    }
+
+    @Test
+    public void alwaysFail16() {
+        assertEquals(14, 1);
+    }
+
+    @Test
+    public void alwaysFail17() {
+        assertEquals(1, 1);
     }
 }

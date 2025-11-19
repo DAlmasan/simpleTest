@@ -17,9 +17,11 @@ jobs:
           $env:PATH += ";$env:TEMP" 
           jq.exe --version
       - name: Log workflow execution parameters
-        shell: bash
+        shell: powershell
         run: |
-          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
+          $json = 'null'
+          $param = $json | jq.exe -c .
+          Write-Output "execution_parameter:: $param"
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1
         id: gitHubActionsIntegration

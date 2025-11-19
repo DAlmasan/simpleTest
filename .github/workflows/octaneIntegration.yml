@@ -2,7 +2,6 @@ name: octaneIntegration2
 on:
   workflow_run:
     workflows: [Maven Tests]
-    branches: [ "main" ]
     types: [requested, in_progress, completed]
   pull_request:
     types: [opened, edited, closed, reopened]

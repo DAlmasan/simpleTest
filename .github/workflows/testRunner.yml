@@ -25,6 +25,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Log workflow execution parameters
+        run: |
+          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
+          
       - name: Check out source
         uses: actions/checkout@v4
 
